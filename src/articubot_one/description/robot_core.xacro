@@ -5,34 +5,13 @@
         <color rgba="1 1 1 1" />
     </material>
 
-    <material name="orange">
-        <color rgba="1 0.3 0.1 1"/>
-    </material>
-
-    <material name="blue">
-        <color rgba="0.2 0.2 1 1"/>
-    </material>
-
     <material name="black">
         <color rgba="0 0 0 1"/>
-    </material>
-
-    <material name="red">
-        <color rgba="1 0 0 1"/>
-    </material>
-    
-    <material name="green">
-        <color rgba="0 1 0 1" />
     </material>
 
     <material name="gray">
         <color rgba="0.5 0.5 0.5 1" />
     </material>
-
-    <material name="pink">
-        <color rgba="1 0.4 0.7 1" />
-    </material>
-
 
     <!-- BASE LINK -->
 
@@ -64,7 +43,7 @@
                 <!-- Hole geometry -->
                 <cylinder length="0.15" radius="0.075"/>
             </geometry>
-            <material name="white"/>
+            <material name="gray"/>
         </visual>
         <collision>
             <origin xyz="0 0 0.13" rpy="0 0 0"/>
@@ -74,12 +53,12 @@
                 <cylinder length="0.15" radius="0.075"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="200" x="0.451" y="0.451" z="0.18">
+        <xacro:inertial_box mass="500" x="0.451" y="0.451" z="0.18">
             <origin xyz="0 0 0.13" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
     <gazebo reference="chassis">
-        <material>Gazebo/White</material>
+        <material>Gazebo/BuildingFrame</material>
     </gazebo>
 
     <!-- Wheel Link -->
@@ -88,7 +67,7 @@
             <geometry>
                 <cylinder length="0.03" radius="0.07" />
             </geometry>
-            <material name="blue"/>
+            <material name="black"/>
         </visual>
         <collision>
             <geometry>
@@ -100,7 +79,7 @@
         </xacro:inertial_cylinder>
     </link>
     <gazebo reference="front_left_wheel">
-        <material>Gazebo/Blue</material>
+        <material>Gazebo/GreyGradientSky</material>
     </gazebo>
 
     <link name="front_right_wheel">
@@ -108,7 +87,7 @@
             <geometry>
                 <cylinder length="0.03" radius="0.07" />
             </geometry>
-            <material name="red"/>
+            <material name="black"/>
         </visual>
         <collision>
             <geometry>
@@ -120,7 +99,7 @@
         </xacro:inertial_cylinder>
     </link>
     <gazebo reference="front_right_wheel">
-        <material>Gazebo/Red</material>
+        <material>Gazebo/GreyGradientSky</material>
     </gazebo>
 
     <link name="back_left_wheel">
@@ -128,7 +107,7 @@
             <geometry>
                 <cylinder length="0.03" radius="0.07" />
             </geometry>
-            <material name="orange"/>
+            <material name="black"/>
         </visual>
         <collision>
             <geometry>
@@ -140,7 +119,7 @@
         </xacro:inertial_cylinder>
     </link>
     <gazebo reference="back_left_wheel">
-        <material>Gazebo/Orange</material>
+        <material>Gazebo/GreyGradientSky</material>
     </gazebo>
 
     <link name="back_right_wheel">
@@ -148,7 +127,7 @@
             <geometry>
                 <cylinder length="0.03" radius="0.07" />
             </geometry>
-            <material name="green"/>
+            <material name="black"/>
         </visual>
         <collision>
             <geometry>
@@ -160,7 +139,7 @@
         </xacro:inertial_cylinder>
     </link>
     <gazebo reference="back_right_wheel">
-        <material>Gazebo/Green</material>
+        <material>Gazebo/GreyGradientSky</material>
     </gazebo>
 
     <!-- Wheel Joint -->

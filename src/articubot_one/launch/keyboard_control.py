@@ -55,23 +55,15 @@ class keyboard_control(Node):
             "Use the following keys to control the robot: \n"
             "'W' : Increase move speed, \n"
             "'S' : Decrease move speed, \n"
-            "'A' : Slide left, \n"
-            "'D' : Slide right, \n"
-            "'Q' : Turn left, \n"
-            "'E' : Turn right, \n"
-            "'y' : Increase move speed increment. \n"
-            "'h' : Decrease move speed increment. \n"
-            "'u' : Increase slide speed increment. \n"
-            "'j' : Decrease slide speed increment. \n"
-            "'i' : Increase turn speed increment. \n"
-            "'k' : Decrease turn speed increment. \n"
+            "'A' : Turn left, \n"
+            "'D' : Turn right, \n"
             "' ' : Brake. \n"
             "'8' : Slide Gripper Up. \n"
             "'2' : Slide Gripper Down. \n"
             "'4' : Close Gripper. \n"
             "'6' : Open Gripper Up. \n"
             "'5' : Set to defalt position. \n"
-            "Keyboard publisher started. Press keys to send messages. Press 'p' to quit.\n"
+            "Keyboard publisher started. Press keys to send messages. Press 'x' to quit.\n"
             f"Current Speeds: Move={self.moveSpeed:.2f}, Slide={self.slideSpeed:.2f}, Turn={self.turnSpeed:.2f}\n"
             f"Current Speed increment: Move={self.plusMoveSpeed:.2f}, Slide={self.plusSlideSpeed:.2f}, Turn={self.plusturnSpeed:.2f}"
             f"\nCurrent Gripper Velocity: Slide={self.gripperSlideVel:.2f}, Up/Down={self.gripperUpDownVel:.2f}"
@@ -83,12 +75,10 @@ class keyboard_control(Node):
     def update_speeds(self, key):
         # Adjust movement, sliding, and turning speeds
         self.moveSpeed = self.moveSpeed + self.plusMoveSpeed if key == 'w' else self.moveSpeed - self.plusMoveSpeed if key == 's' else self.moveSpeed
-        self.slideSpeed = self.slideSpeed + self.plusSlideSpeed if key == 'd' else self.slideSpeed - self.plusSlideSpeed if key == 'a' else self.slideSpeed
-        self.turnSpeed = self.turnSpeed + self.plusturnSpeed if key == 'q' else self.turnSpeed - self.plusturnSpeed if key == 'e' else self.turnSpeed
+        self.turnSpeed = self.turnSpeed + self.plusturnSpeed if key == 'a' else self.turnSpeed - self.plusturnSpeed if key == 'd' else self.turnSpeed
 
         self.plusMoveSpeed = self.plusMoveSpeed + self.plusSpeedSize if key == 'W' else self.plusMoveSpeed - self.plusSpeedSize if key == 'S' else self.plusMoveSpeed
-        self.plusSlideSpeed = self.plusSlideSpeed + self.plusSpeedSize if key == 'A' else self.plusSlideSpeed - self.plusSpeedSize if key == 'D' else self.plusSlideSpeed
-        self.plusturnSpeed = self.plusturnSpeed + self.plusSpeedSize if key == 'Q' else self.plusturnSpeed - self.plusSpeedSize if key == 'E' else self.plusturnSpeed
+        self.plusturnSpeed = self.plusturnSpeed + self.plusSpeedSize if key == 'A' else self.plusturnSpeed - self.plusSpeedSize if key == 'D' else self.plusturnSpeed
 
         if key == ' ':
             self.moveSpeed = 0.0
@@ -134,7 +124,7 @@ class keyboard_control(Node):
         """Continuously listens for keypresses and publishes them."""
         while rclpy.ok():
             key = self.get_key()
-            if key == 'p':  # Exit condition
+            if key == 'x':  # Exit condition
                 break
             self.update_speeds(key)
             self.publish_message(key)
